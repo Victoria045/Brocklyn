@@ -9,14 +9,56 @@
 </head>
 
 {% block content %}
-<div style="background-image:url('static/images/img1.jpg');width: 100%;background-repeat: no-repeat;background-size: cover;">
-    <div class="container" >
-        <div class="text-center" style="margin-top:15%">
-            <h1>Welcome to Brocklyn</h1>
-            <h5 style="margin-top:6%">Get Started by joining a hood today</h5>
-            <a href="{#{% url 'hood' %}#}" class="btn btn-sm btn-info mt-4">Join Hood</a>
+    <div class="container d-flex" style="margin-top: 10%;">
+        {% if user.is_authenticated %}
+        <div class="pl-2" style="border: solid 1px #000000;height: 500px;width: 20%;margin-right: 20px;">
+        <ul class="list-unstyled components ml-2 mr-2">
+            <li class="mb-4 mt-3">
+                <a href="{% url 'profile' user.username %}" class="text-dark">
+                    <img class="rounded-circle nav-img"src="{{ user.profile.profile_picture.url }}" alt="p" style="width: 18%;">
+                    &nbsp; Profile
+                </a>
+      
+            </li>
+            <li class="mb-4">
+                <a href="{% url 'edit-profile' user.username %}" class="text-dark">
+                    <i class="fas fa-edit"></i>&nbsp;
+                    &nbsp; Edit Profile
+                </a>
+            </li>
+            <li class="mb-4">
+                <a href="{% url 'hood' %}" class="text-dark">
+                    <i class="fas fa-home"></i>&nbsp;
+                    &nbsp; Hoods
+                </a>
+            </li>
+      
+            {% if user.profile.neighbourhood %}
+            <li class="mb-4">
+                <a href="{% url 'single-hood' user.profile.neighbourhood.id %}" class="text-dark">
+                    <i class="fas fa-paper-plane"></i>&nbsp;
+                    &nbsp;{{user.profile.neighbourhood.name}}
+                </a>
+            </li>
+            {% else %}
+            <li class="mb-4">
+                <a href=""> &nbsp;
+                    No Hood Yet
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="logout ml-2 mr-2 ">
+            <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-danger d-block mx-auto"> Logout</a>
+        </div>
+        </div>
+      
+        {% endif%}
+        <div class="text-center" style="background-color: #ced4da;width: 100%;">
+            <h1 style="margin-top:10%">Welcome to Brocklyn</h1>
+            <h5 style="margin-top:6%">Get Started by joining a neighbourhood today..</h5>
+            <a href="{% url 'hood' %}" class="btn btn-dark mt-4">Join neighbourhood</a>
         </div>
 
     </div>
-</div>
 {% endblock %}
