@@ -1,13 +1,24 @@
-<nav class="navbar fixed-top navbar-expand-lg scrolling-navbar" style="background-color: #000000;" id="nbar">
-  <div class="container">
-
-    <span>
-      <a class="navbar-brand brocklyn text-white" href="{% url 'index' %}">Brocklyn</a>
-    </span>
-    
-    <span class="d-flex justify-content-between">
-      <a class="btn btn-outline-light btn-sm" href="{% url 'login' %}">LOGIN</a>
-    </span>
-      
+<nav class="navbar fixed-top navbar-expand-lg" style="background-color: #000000;" id="nbar">
+  <div class="container d-flex">
+        <div>
+          <a class="navbar-brand brocklyn text-white ml-3" href="{% url 'index' %}">Brocklyn</a>
+        </div>
+        <div>
+          <a class="navbar-brand brocklyn text-white ml-3" href="admin/">Admin</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: right;">
+          <ul class="nav navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <li class="nav-item active mr-3">
+                  <img class="rounded-circle nav-img"src="{{ user.profile.profile_picture.url }}" alt="prof">
+                  &nbsp; <span class="text-white">{{user.username|title}}</span>
+              </li>
+              {% else %}
+              <li class="nav-item active">
+                  <a class="btn btn-outline-light btn-sm nav-link" href="{% url 'login' %}">LOGIN</a>
+              </li>
+              {% endif %}
+          </ul>
+      </div>     
   </div>
 </nav>
