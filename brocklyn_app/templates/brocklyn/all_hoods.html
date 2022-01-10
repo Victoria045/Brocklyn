@@ -6,7 +6,7 @@
     <div class="row">
         {% for hood in all_hoods %}
         <div class="col-md-4">
-            <div class="card mb-4" style="min-height:500px;">
+            <div class="card mb-4" style="min-height:460px;">
                 <img src="{{ hood.hood_logo.url }}" style="height: 260px;width: 100%;object-fit: cover;" class="card-img-top" alt="{{ hood.name }}">
                 <div class="card-body">
                     <h5 class="card-title text-info">{{ hood.name }}  ({{hood.location}}) <span class="ml-4">{{hood.members.count}} member{{hood.members.count|pluralize}}</span></h5>
