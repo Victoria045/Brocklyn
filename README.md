@@ -20,6 +20,18 @@ This is a neighborhood application that requires a user to sign in the applicati
 * Change the neighborhood when I decide to move out.
 * Only view details of a single neighborhood.
 
+## Behaviour Driven Development
+| Behaviour | Input | Output |
+| :---------------- | :---------------: | ------------------: |
+| Load the application | On application load | Display of Login form |
+| Create account by Sign Up | Enter email, username and password| Redirect to login|
+| Login selected | Enter username and password you signed up with| Redirect to home page|
+| Join neighbourhood button selected | Submit | Upload new hood in a form or join an existing one |
+| Click on your hood | CLick | Redirected to page with your hood details and you can create posts or a business |
+| Click the user profile icon | Select Profile | Redirected to profile page where you can view profile |
+| Click the edit profile icon | Select Edit Profile | A form displays where you can edit profile |
+| Click the logout button | Click | Logout and redirected to login page |
+
 # Setup and Installation
 #### Cloning the repository
 * Open Terminal:
